@@ -8,18 +8,18 @@ before_install:
 script:
   - docker run -e CI=true pavan/kp npm run test -- --coverage
 
-  after_success:
-    - docker build -t pavan/multi-client ./client
-    - docker build -t pavan/multi-nginx ./nginx
-    - docker build -t pavan/multi-server ./server
-    - docker build -t pavan/multi-worker ./worker
-  
-    # Log in to the docker CLI
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  
-    # Take those images and push them to docker hub
-    - docker push pavan/multi-client
-    - docker push pavan/multi-nginx
-    - docker push pavan/multi-server
-    - docker push pavan/multi-worker
+after_success:
+  - docker build -t pavan/multi-client ./client
+  - docker build -t pavan/multi-nginx ./nginx
+  - docker build -t pavan/multi-server ./server
+  - docker build -t pavan/multi-worker ./worker
+
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  # Take those images and push them to docker hub
+  - docker push pavan/multi-client
+  - docker push pavan/multi-nginx
+  - docker push pavan/multi-server
+  - docker push pavan/multi-worker
 #blaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
