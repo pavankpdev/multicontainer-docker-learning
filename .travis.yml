@@ -18,12 +18,8 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   # Take those images and push them to docker hub
-  - docker tag pavan/multi-client pavanleton/multi-learning:client
-  - docker push pavanleton/multi-learning:client
-  - docker tag pavan/multi-nginx pavanleton/multi-learning:nginx
-  - docker push pavanleton/multi-learning:nginx
-  - docker tag pavan/multi-server pavanleton/multi-learning:server
-  - docker push pavanleton/multi-learning:server
-  - docker tag pavan/multi-worker pavanleton/multi-learning:worker
-  - docker push pavanleton/multi-learning:worker
+  - docker push pavanleton/multi-client
+  - docker push pavanleton/multi-nginx
+  - docker push pavanleton/multi-server
+  - docker push pavanleton/multi-worker
 #blaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
