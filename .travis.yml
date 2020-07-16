@@ -22,4 +22,16 @@ after_success:
   - docker push pavanleton/multi-nginx
   - docker push pavanleton/multi-server
   - docker push pavanleton/multi-worker
-#blaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+deploy:
+  provider: elasticbeanstalk
+  region: ap-south-1
+  app: multi-dock
+  env: MultiDock-env-1
+  bucket_name: elasticbeanstalk-ap-south-1-701994403871
+  bucket_path: multi-docker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
